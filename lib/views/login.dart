@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:j_one/home_screen.dart';
+import 'package:j_one/views/home_screen.dart';
 
 class Login extends StatelessWidget {
   @override
