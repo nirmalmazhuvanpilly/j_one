@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:j_one/views/login.dart';
 import 'package:j_one/views/recharge.dart';
+import 'package:j_one/views/recharge_details.dart';
 
 class HomeScreen extends StatelessWidget {
   Widget _logOut(BuildContext context) {
@@ -37,11 +38,18 @@ class HomeScreen extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class HomeScreenFields extends StatelessWidget {
-  TextStyle _walletStyle = new TextStyle(
-    color: Colors.blue[900],
-    fontWeight: FontWeight.bold,
-  );
+class Card extends StatelessWidget {
+  String name;
+  String phoneNumber;
+  String amount;
+  String mode;
+
+  Card({
+    this.name,
+    this.phoneNumber,
+    this.amount,
+    this.mode,
+  });
 
   TextStyle _nameStyle = new TextStyle(
     color: Colors.blue[900],
@@ -59,45 +67,58 @@ class HomeScreenFields extends StatelessWidget {
     fontWeight: FontWeight.bold,
   );
 
-  Widget card({
-    String name,
-    String phoneNumber,
-    String amount,
-    String mode,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                name,
-                style: _nameStyle,
-              ),
-              Text(
-                "\u20B9 $amount",
-                style: _amountStyle,
-              ),
-            ],
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RechargeDetails(),
           ),
-          SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text("+91 $phoneNumber"),
-              Text(
-                mode,
-                style: _successStyle,
-              ),
-            ],
-          ),
-          Divider(),
-        ],
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  name,
+                  style: _nameStyle,
+                ),
+                Text(
+                  "\u20B9 $amount",
+                  style: _amountStyle,
+                ),
+              ],
+            ),
+            SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("+91 $phoneNumber"),
+                Text(
+                  mode,
+                  style: _successStyle,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+// ignore: must_be_immutable
+class HomeScreenFields extends StatelessWidget {
+  TextStyle _walletStyle = new TextStyle(
+    color: Colors.blue[900],
+    fontWeight: FontWeight.bold,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -189,46 +210,78 @@ class HomeScreenFields extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.only(top: 10),
               children: <Widget>[
-                card(
+                Card(
                     name: "Nirmal",
                     phoneNumber: "8100000000",
                     amount: "99",
                     mode: "Cash"),
-                card(
+                Divider(),
+                Card(
                     name: "Jabir",
                     phoneNumber: "8187878787",
                     amount: "99",
                     mode: "Credit"),
-                card(
+                Divider(),
+                Card(
                     name: "Nirmal",
                     phoneNumber: "8100000000",
                     amount: "99",
                     mode: "Cash"),
-                card(
+                Divider(),
+                Card(
                     name: "Jabir",
                     phoneNumber: "8187878787",
                     amount: "99",
                     mode: "Credit"),
-                card(
+                Divider(),
+                Card(
                     name: "Nirmal",
                     phoneNumber: "8100000000",
                     amount: "99",
                     mode: "Cash"),
-                card(
+                Divider(),
+                Card(
                     name: "Jabir",
                     phoneNumber: "8187878787",
                     amount: "99",
                     mode: "Credit"),
-                card(
+                Divider(),
+                Card(
                     name: "Nirmal",
                     phoneNumber: "8100000000",
                     amount: "99",
                     mode: "Cash"),
-                card(
+                Divider(),
+                Card(
                     name: "Jabir",
                     phoneNumber: "8187878787",
                     amount: "99",
                     mode: "Credit"),
+                Divider(),
+                Card(
+                    name: "Nirmal",
+                    phoneNumber: "8100000000",
+                    amount: "99",
+                    mode: "Cash"),
+                Divider(),
+                Card(
+                    name: "Jabir",
+                    phoneNumber: "8187878787",
+                    amount: "99",
+                    mode: "Credit"),
+                Divider(),
+                Card(
+                    name: "Nirmal",
+                    phoneNumber: "8100000000",
+                    amount: "99",
+                    mode: "Cash"),
+                Divider(),
+                Card(
+                    name: "Jabir",
+                    phoneNumber: "8187878787",
+                    amount: "99",
+                    mode: "Credit"),
+                Divider(),
               ],
             ),
           ),
