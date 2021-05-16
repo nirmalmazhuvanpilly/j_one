@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:j_one/views/login.dart';
+import 'package:j_one/views/recharge.dart';
 
 class HomeScreen extends StatelessWidget {
+  Widget _logOut(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Login(),
+          ),
+        );
+      },
+      child: Center(
+        child: Text("Logout"),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         title: Text("Home"),
         backgroundColor: Colors.blue[800],
         actions: <Widget>[
-          Center(child: Text("Logout")),
+          _logOut(context),
           SizedBox(width: 10),
         ],
       ),
@@ -41,7 +59,12 @@ class HomeScreenFields extends StatelessWidget {
     fontWeight: FontWeight.bold,
   );
 
-  Widget card() {
+  Widget card({
+    String name,
+    String phoneNumber,
+    String amount,
+    String mode,
+  }) {
     return Container(
       padding: const EdgeInsets.all(10),
       child: Column(
@@ -50,11 +73,11 @@ class HomeScreenFields extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Nirmal",
+                name,
                 style: _nameStyle,
               ),
               Text(
-                "\u20B9 99",
+                "\u20B9 $amount",
                 style: _amountStyle,
               ),
             ],
@@ -63,9 +86,9 @@ class HomeScreenFields extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text("+91 8129656368"),
+              Text("+91 $phoneNumber"),
               Text(
-                "Success",
+                mode,
                 style: _successStyle,
               ),
             ],
@@ -109,6 +132,9 @@ class HomeScreenFields extends StatelessWidget {
                     style: _walletStyle,
                   ),
                   GestureDetector(
+                    onTap: () {
+                      print("Add money");
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
@@ -125,12 +151,16 @@ class HomeScreenFields extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  child: Text(
-                    "Recharge",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
                   style: ElevatedButton.styleFrom(primary: Colors.orange),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Recharge(),
+                      ),
+                    );
+                  },
+                  child: Text("Recharge"),
                 ),
               ),
             ],
@@ -159,19 +189,46 @@ class HomeScreenFields extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.only(top: 10),
               children: <Widget>[
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
-                card(),
+                card(
+                    name: "Nirmal",
+                    phoneNumber: "8100000000",
+                    amount: "99",
+                    mode: "Cash"),
+                card(
+                    name: "Jabir",
+                    phoneNumber: "8187878787",
+                    amount: "99",
+                    mode: "Credit"),
+                card(
+                    name: "Nirmal",
+                    phoneNumber: "8100000000",
+                    amount: "99",
+                    mode: "Cash"),
+                card(
+                    name: "Jabir",
+                    phoneNumber: "8187878787",
+                    amount: "99",
+                    mode: "Credit"),
+                card(
+                    name: "Nirmal",
+                    phoneNumber: "8100000000",
+                    amount: "99",
+                    mode: "Cash"),
+                card(
+                    name: "Jabir",
+                    phoneNumber: "8187878787",
+                    amount: "99",
+                    mode: "Credit"),
+                card(
+                    name: "Nirmal",
+                    phoneNumber: "8100000000",
+                    amount: "99",
+                    mode: "Cash"),
+                card(
+                    name: "Jabir",
+                    phoneNumber: "8187878787",
+                    amount: "99",
+                    mode: "Credit"),
               ],
             ),
           ),
